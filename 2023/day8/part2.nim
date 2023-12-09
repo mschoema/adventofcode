@@ -18,14 +18,14 @@ proc get_next_z(map: Table[string, (string, string)],
 proc main() =
   var map: Table[string, (string, string)]
   var nodes: seq[string]
-  for line in lines("network.txt"):
+  for line in lines("input/network.txt"):
     var newline = line.replace(")", "")
     var input = newline.split(" = (")
     var output = input[1].split(", ")
     map[input[0]] = (output[0], output[1])
     if input[0].endsWith('A'):
       nodes.add(input[0])
-  let moves = readFile("moves.txt")
+  let moves = readFile("input/moves.txt")
   var cicles: seq[int]
   for i, node in nodes:
     cicles.add(get_next_z(map, moves, node))

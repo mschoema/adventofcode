@@ -4,12 +4,12 @@ import std/tables
 
 proc main() =
   var map: Table[string, (string, string)]
-  for line in lines("network.txt"):
+  for line in lines("input/network.txt"):
     var newline = line.replace(")", "")
     var input = newline.split(" = (")
     var output = input[1].split(", ")
     map[input[0]] = (output[0], output[1])
-  let moves = readFile("moves.txt")
+  let moves = readFile("input/moves.txt")
   var loc = "AAA"
   var i = 0
   while loc != "ZZZ":
